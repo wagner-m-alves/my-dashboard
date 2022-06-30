@@ -10,10 +10,14 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "autoprefixer": "^10.4.7",
+        "@mdi/js": "^6.8.96",
+        "autoprefixer": "10.4.5",
         "axios": "^0.21",
+        "chart.js": "^3.8.0",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
+        "numeral": "^2.0.6",
+        "pinia": "^2.0.14",
         "postcss": "^8.4.14",
         "tailwindcss": "^3.1.4",
         "vue-loader": "^16.8.3"
@@ -21,6 +25,9 @@
     "dependencies": {
         "@inertiajs/inertia": "^0.11.0",
         "@inertiajs/inertia-vue3": "^0.6.0",
+        "@inertiajs/progress": "^0.2.7",
+        "@tailwindcss/forms": "^0.5.2",
+        "@tailwindcss/typography": "^0.5.2",
         "vue": "^3.2.37"
     }
 }
