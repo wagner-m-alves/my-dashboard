@@ -67,18 +67,18 @@ const menuClick = event => {
         v-if="item.icon"
         :path="item.icon"
         class="flex-none"
-        :class="[ vSlot && vSlot.isExactActive ? asideMenuItemActiveStyle : asideMenuItemInactiveStyle ]"
+        :class="activeInactiveStyle"
         w="w-12"
       />
       <span
         class="grow"
-        :class="[ vSlot && vSlot.isExactActive ? asideMenuItemActiveStyle : asideMenuItemInactiveStyle ]"
+        :class="activeInactiveStyle"
       >{{ item.label }}</span>
       <icon
         v-if="hasDropdown"
         :path="dropdownIcon"
         class="flex-none"
-        :class="[ vSlot && vSlot.isExactActive ? asideMenuItemActiveStyle : asideMenuItemInactiveStyle ]"
+        :class="activeInactiveStyle"
         w="w-12"
       />
     </component>
