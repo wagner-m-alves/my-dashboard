@@ -40,7 +40,7 @@ php artisan key:generate
 
 ## Instruções Para Implementação Manual
 
-# Instalar Laravel 8.x e Dependências Básicas
+### Instalar Laravel 8.x e Dependências Básicas
 
 1. Instale um novo projeto Laravel 8.x, utilizando o comando abaixo. Lembre-se de substituir `new-project` pelo nome do seu projeto.
 ```
@@ -52,14 +52,14 @@ composer create-project laravel/laravel:^8.0 new-project
 composer require tightenco/ziggy
 ```
 
-# Instalar Vue.JS 3.x
+### Instalar Vue.JS 3.x
 
 1. Instale o Vue.JS 3.x, utilizando o comando abaixo:
 ```
 npm install vue
 ```
 
-# Instalar Inertia
+### Instalar Inertia
 
 1. Instale os adaptadores do lado do servidor, utilizando o comando abaixo:
 ```
@@ -105,7 +105,7 @@ npm install @inertiajs/inertia @inertiajs/inertia-vue3
 
 6. Crie o diretório `resources/js/Pages`.
 
-# Instalar Tailwind CSS 3.x
+### Instalar Tailwind CSS 3.x
 
 1. Instale o Tailwind CSS, utilizando o comando abaixo:
 ```
@@ -140,7 +140,8 @@ theme: {
 @tailwind utilities;
 ```
 
-# Configurações
+### Configurações
+
 1. Adicione o Vue no arquivo `webpack.mix.js`, localizado na raiz do projeto. Certifique-se de que seu arquivo fique semelhando ao exemplo abaixo:
 ```
 mix.js('resources/js/app.js', 'public/js')
@@ -155,14 +156,15 @@ mix.js('resources/js/app.js', 'public/js')
 npm run dev
 ```
 
-# Obter Arquivos Necessários
+### Obter Arquivos Necessários
 
 1. Clone esse repositório, utilizando o comando abaixo:
 ```
 git clone https://github.com/wagner-m-alves/dashboard.git
 ```
 
-# Dependências Secundárias
+### Dependências Secundárias
+
 1. Acesse a raiz de seu novo projeto Laravel, no qual deseja implementar o dashboard, utilizando o comando abaixo:
 ```
 cd caminho-do-seu-projeto-laravel
@@ -174,8 +176,10 @@ npm i pinia @mdi/js chart.js numeral autoprefixer -D
 npm install autoprefixer@10.4.5 --save-exact
 ```
 
-#  Configuração do Autoprefixer
+### Configuração do Autoprefixer
+
 1. Adicione, caso não esteja pronto, `require('autoprefixer')` às opções de plug-in PostCSS no arquivo `webpack.mix.js`, presente na raiz de seu projeto Laravel.
 
-# Copia de Arquivos
+### Copia de Arquivos
+
 1. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie os diretórios `js` e `css`, presentes no diretório `resources` para o diretório `resources` do seu novo projeto Laravel.
