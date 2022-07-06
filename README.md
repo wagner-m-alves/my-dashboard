@@ -1,64 +1,181 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## Dashboard
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Esse projeto é uma implementação do Admin One Dashboard, o qual é um dashboard open source, construido com Vue.JS 3, Inertia e Tailwind CSS 3, tendo-os como dependências. Esse projeto segue uma implementação um pouco diferente da apresentada na [Documentação Oficial](https://github.com/justboil/admin-one-vue-tailwind), não utilizando o Laravel Jetstream.
 
-## About Laravel
+## Tecnologias Primarias
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Laravel 8.x
+- Vue.JS 3.x
+- Inertia
+- Tailwind CSS 3.x
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Instruções de Uso
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Para começar um novo projeto utilizando esse como ponto de partida, siga as instruções abaixo:
 
-## Learning Laravel
+1. Clone o repositório, usando o comando abaixo:
+```
+git clone https://github.com/wagner-m-alves/dashboard.git
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+2. Acesse a raiz do projeto, utilizando o comando abaixo:
+```
+cd dashboard
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3. Instale as dependências, utilizando o comando abaixo:
+```
+composer install
+```
 
-## Laravel Sponsors
+4. Crie o arquivo .env, utilizando o comando abaixo:
+```
+cp .env.example .env
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+5. Gere a chave do projeto, utilizando o comando abaixo:
+```
+php artisan key:generate
+```
 
-### Premium Partners
+## Instruções Para Implementação Manual
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+# Instalar Laravel 8.x e Dependências Básicas
 
-## Contributing
+1. Instale um novo projeto Laravel 8.x, utilizando o comando abaixo. Lembre-se de substituir `new-project` pelo nome do seu projeto.
+```
+composer create-project laravel/laravel:^8.0 new-project
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+2. Instale o pacote `Ziggy` (pacote que fornece a função global route para o JavaScript), utilizando o comando abaixo:
+```
+composer require tightenco/ziggy
+```
 
-## Code of Conduct
+# Instalar Vue.JS 3.x
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. Instale o Vue.JS 3.x, utilizando o comando abaixo:
+```
+npm install vue
+```
 
-## Security Vulnerabilities
+# Instalar Inertia
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1. Instale os adaptadores do lado do servidor, utilizando o comando abaixo:
+```
+composer require inertiajs/inertia-laravel
+```
 
-## License
+2. Crie ou modifique o arquivo `resources/view/app.blade.php`, conforme o conteúdo abaixo:
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1.0" />
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+        <!-- Styles -->
+        <link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
+
+        <!-- Scripts -->
+        @routes
+        <script src="{{ mix('/js/app.js') }}" defer></script>
+        @inertiaHead
+    </head>
+    <body>
+        @inertia
+    </body>
+</html>
+```
+
+3. Crie o middleware do Inertia, utilizando o comando abaixo:
+```
+php artisan inertia:middleware
+```
+
+4. Registre o middleware criado no passo anterior, acrescentando a linha abaixo na seção `web` do arquivo `app/http/kernel.php`:
+```
+\App\Http\Middleware\HandleInertiaRequests::class,
+```
+
+5. Instale as dependências do lado cliente, utilizando o comando abaixo:
+```
+npm install @inertiajs/inertia @inertiajs/inertia-vue3
+```
+
+6. Crie o diretório `resources/js/Pages`.
+
+# Instalar Tailwind CSS 3.x
+
+1. Instale o Tailwind CSS, utilizando o comando abaixo:
+```
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init
+```
+
+2. Adicione o Tailwind CSS ao Laravel Mix, adicionando a linha abaixo dentro do `postcss`,  no arquivo `webpack.mix.js`, localizado na raiz do projeto:
+```
+require("tailwindcss"),
+```
+
+3. Modifique o arquivo `tailwind.config.js`, localizado na raiz do projeto, de forma que fique igual ao exemplo abaixo:
+```
+module.exports = { 
+content: [ 
+    "./resources/**/*.blade.php",
+    "./resources/**/*.js",
+    "./resources/**/*.vue",
+], 
+theme: { 
+	extend: {}, 
+},
+    plugins: [], 
+}
+```
+
+4. Adicione o conteúdo abaixo no arquivo `resources/css/app.css`:
+```
+@tailwind base; 
+@tailwind components; 
+@tailwind utilities;
+```
+
+# Configurações
+1. Adicione o Vue no arquivo `webpack.mix.js`, localizado na raiz do projeto. Certifique-se de que seu arquivo fique semelhando ao exemplo abaixo:
+```
+mix.js('resources/js/app.js', 'public/js')
+.vue()
+.postCss('resources/css/app.css', 'public/css', [
+	require("tailwindcss")
+]);
+```
+
+2. Para finalizar, rode o comando abaixo:
+```
+npm run dev
+```
+
+# Obter Arquivos Necessários
+
+1. Clone esse repositório, utilizando o comando abaixo:
+```
+git clone https://github.com/wagner-m-alves/dashboard.git
+```
+
+# Dependências Secundárias
+1. Acesse a raiz de seu novo projeto Laravel, no qual deseja implementar o dashboard, utilizando o comando abaixo:
+```
+cd caminho-do-seu-projeto-laravel
+```
+
+2. Instale e atualize as dependências, utilizando os comandos abaixo:
+```
+npm i pinia @mdi/js chart.js numeral autoprefixer -D
+npm install autoprefixer@10.4.5 --save-exact
+```
+
+#  Configuração do Autoprefixer
+1. Adicione, caso não esteja pronto, `require('autoprefixer')` às opções de plug-in PostCSS no arquivo `webpack.mix.js`, presente na raiz de seu projeto Laravel.
+
+# Copia de Arquivos
+1. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie os diretórios `js` e `css`, presentes no diretório `resources` para o diretório `resources` do seu novo projeto Laravel.
