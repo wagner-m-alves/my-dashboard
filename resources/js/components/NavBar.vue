@@ -37,8 +37,6 @@ const isNavBarVisible = computed(() => !mainStore.isFullScreen)
 
 const isAsideMobileExpanded = computed(() => mainStore.isAsideMobileExpanded)
 
-const userName = computed(() => mainStore.userName)
-
 const menuToggleMobileIcon = computed(() => isAsideMobileExpanded.value ? mdiBackburger : mdiForwardburger)
 
 const menuToggleMobile = () => mainStore.asideMobileToggle()
@@ -131,12 +129,12 @@ const menuOpenLg = () => {
           </template>
         </nav-bar-menu>
         <nav-bar-menu has-divider>
-          <nav-bar-item-label :label="userName">
+          <nav-bar-item-label :label="$page.props.user.name">
             <user-avatar class="w-6 h-6 mr-3 inline-flex" />
           </nav-bar-item-label>
 
           <template #dropdown>
-            <nav-bar-item to="/profile">
+            <nav-bar-item routeName="profile">
               <nav-bar-item-label
                 :icon="mdiAccount"
                 label="My Profile"
@@ -155,7 +153,7 @@ const menuOpenLg = () => {
               />
             </nav-bar-item>
             <divider nav-bar />
-            <nav-bar-item>
+            <nav-bar-item routeName="logout">
               <nav-bar-item-label
                 :icon="mdiLogout"
                 label="Log Out"

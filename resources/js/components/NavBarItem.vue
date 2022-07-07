@@ -1,13 +1,14 @@
 <script setup>
 import { useMainStore } from '@/stores/main'
 import { computed } from 'vue'
+import { Link } from '@inertiajs/inertia-vue3'
 
 const props = defineProps({
   href: {
     type: String,
     default: null
   },
-  to: {
+  routeName: {
     type: String,
     default: null
   },
@@ -30,8 +31,8 @@ const is = computed(() => {
     return 'a'
   }
 
-  if (props.to) {
-    return 'router-link'
+  if (props.routeName) {
+    return Link
   }
 
   return 'div'
@@ -84,10 +85,11 @@ const activeClass = computed(() => {
   <component
     :is="is"
     :class="componentClass"
-    :to="to"
-    :href="href"
+    :to="routeName"
+    :href="routeName"
     :exact-active-class="activeClass"
   >
-    <slot />
+   {{routeName}}
+   <slot />
   </component>
 </template>

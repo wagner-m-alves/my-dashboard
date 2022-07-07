@@ -1,3 +1,5 @@
+import './bootstrap';
+
 import { createPinia } from 'pinia'
 import { useMainStore } from '@/stores/main'
 

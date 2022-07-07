@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
+use App\Http\Controllers\Site\SiteController;
+use App\Http\Controllers\Web\Usr\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +15,17 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
+# Site
+Route::get('/', [SiteController::class, 'welcome'])->name('welcome');
 
+
+# Authentication
+require __DIR__.'/auth.php';
+
+
+# Usr
+Route::group(['middleware' => ['auth', 'verified']], function () {
+    # Dashboard
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 });
 
-
-Route::get('/home', function () {
-    return Inertia::render('Home');
-  })->name('dashboard');
