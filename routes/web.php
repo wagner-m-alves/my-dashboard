@@ -16,7 +16,7 @@ use App\Http\Controllers\Web\Usr\HomeController;
 */
 
 # Site
-Route::get('/', [SiteController::class, 'welcome'])->name('welcome');
+Route::get('/', [SiteController::class, 'welcome'])->name('site.welcome');
 
 
 # Authentication

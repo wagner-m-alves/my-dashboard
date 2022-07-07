@@ -1,13 +1,14 @@
 ## Dashboard
 
-Esse projeto é uma implementação do Admin One Dashboard, o qual é um dashboard open source, construido com Vue.JS 3, Inertia e Tailwind CSS 3, tendo-os como dependências. Esse projeto segue uma implementação um pouco diferente da apresentada na [Documentação Oficial](https://github.com/justboil/admin-one-vue-tailwind), não utilizando o Laravel Jetstream.
+Esse projeto é uma implementação do Admin One Dashboard, o qual é um dashboard open source, construido com Vue.JS 3, Inertia JS e Tailwind CSS 3, tendo-os como dependências. Esse projeto segue uma implementação um pouco diferente da apresentada na [Documentação Oficial](https://github.com/justboil/admin-one-vue-tailwind), não utilizando o Laravel Jetstream.
 
 ## Tecnologias Primarias
 
-- Laravel 8.x
-- Vue.JS 3.x
-- Inertia
-- Tailwind CSS 3.x
+- [Laravel 8.x](https://laravel.com/docs/8.x)
+- [Vue.JS 3.x](https://vuejsbr-docs-next.netlify.app/)
+- [Inertia JS](https://inertiajs.com/)
+- [Tailwind CSS 3.x](https://tailwindcss.com/docs/guides/laravel)
+- [Admin One Dashboard](https://github.com/justboil/admin-one-vue-tailwind)
 
 ## Instruções de Uso
 
