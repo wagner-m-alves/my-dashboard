@@ -1,9 +1,9 @@
 import './bootstrap';
 
 import { createPinia } from 'pinia'
-import { useMainStore } from '@/stores/main'
+import { useMainStore } from '@/Dashboard/stores/main'
 
-import { darkModeKey, styleKey } from '@/config.js'
+import { darkModeKey, styleKey } from '@/Dashboard/config.js'
 
 import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/inertia-vue3'

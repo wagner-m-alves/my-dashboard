@@ -183,4 +183,14 @@ npm install autoprefixer@10.4.5 --save-exact
 
 ### Copia de Arquivos
 
-1. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie os diretórios `js` e `css`, presentes no diretório `resources` para o diretório `resources` do seu novo projeto Laravel.
+1. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie os diretórios `resources/js` e `resources/css` para o diretório `resources` do seu novo projeto Laravel.
+
+2. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie os diretórios `app/Http/Controllers/Auth`, `app/Http/Controllers/Site` e `app/Http/Controllers/Web` para o diretório `app/Http/Controllers` do seu novo projeto Laravel.
+
+3. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o diretório `app/Http/Requests/Auth` para o diretório `app/Http/Requests` do seu novo projeto Laravel.
+
+4. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o arquivo `app/Http/Middleware/HandleInertiaRequests.php` para o diretório `app/Http/Middleware` do seu novo projeto Laravel, de modo a substituir o arquivo existente.
+
+5. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o arquivo `app/routes/auth.php` para o diretório `app/routes` do seu novo projeto Laravel.
+
+6. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o arquivo `app/routes/web.php` para o diretório `app/routes` do seu novo projeto Laravel, de modo a substituir o arquivo existente.

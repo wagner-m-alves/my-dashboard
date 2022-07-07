@@ -1,11 +1,11 @@
 <script setup>
 import { computed } from 'vue'
-import { useMainStore } from '@/stores/main'
-import menu from '@/menu.js'
-import NavBar from '@/components/NavBar.vue'
-import AsideMenu from '@/components/AsideMenu.vue'
-import FooterBar from '@/components/FooterBar.vue'
-import Overlay from '@/components/Overlay.vue'
+import { useMainStore } from '@/Dashboard/stores/main'
+import menu from '@/Dashboard/menu.js'
+import NavBar from '@/Dashboard/components/NavBar.vue'
+import AsideMenu from '@/Dashboard/components/AsideMenu.vue'
+import FooterBar from '@/Dashboard/components/FooterBar.vue'
+import Overlay from '@/Dashboard/components/Overlay.vue'
 
 const mainStore = useMainStore()
 
