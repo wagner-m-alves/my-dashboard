@@ -1,96 +1,79 @@
 <template>
     <form @submit.prevent="submitted" class="p-6 space-y-4">
         <div class="mb-3">
-            <outline-text-input id="name" label="Nome" :hasError="v$.form.name.$error" :errorList="v$.form.name.$errors" :otherError="$page.props.errors.name" v-model="form.name"/>
+            <outline-text-input id="name" label="Nome" :hasError="v$.name.$error" :errorList="v$.name.$errors" :otherError="$page.props.errors.name" v-model="form.name"/>
         </div>
         <div class="mb-3">
-            <outline-text-input id="email" label="Email" :hasError="v$.form.email.$error" :errorList="v$.form.email.$errors" :otherError="$page.props.errors.email" v-model="form.email"/>
+            <outline-text-input id="email" label="Email" :hasError="v$.email.$error" :errorList="v$.email.$errors" :otherError="$page.props.errors.email" v-model="form.email"/>
         </div>
         <div class="mb-3">
-            <outline-password-input id="password" label="Senha" :hasError="v$.form.password.$error" :errorList="v$.form.password.$errors" :otherError="$page.props.errors.password" v-model="form.password"/>
+            <outline-password-input id="password" label="Senha" :hasError="v$.password.$error" :errorList="v$.password.$errors" :otherError="$page.props.errors.password" v-model="form.password"/>
         </div>
         <div class="mb-3">
-            <outline-password-input id="password_confirmation" label="Confirmar Senha" :hasError="v$.form.password_confirmation.$error" :errorList="v$.form.password_confirmation.$errors" :otherError="$page.props.errors.password_confirmation" v-model="form.password_confirmation"/>
+                <outline-password-input id="password_confirmation" label="Confirmar Senha" :hasError="v$.password_confirmation.$error" :errorList="v$.password_confirmation.$errors" :otherError="$page.props.errors.password_confirmation" v-model="form.password_confirmation"/>
         </div>
 
         <div class="flex items-center justify-end">
-            <basic-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+            <secondary-button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                 Registrar
-            </basic-button>
+            </secondary-button>
         </div>
     </form>
 </template>
 
-<script>
+<script setup>
     import useValidate from '@vuelidate/core'
     import { required, email, minLength, maxLength, sameAs } from '@vuelidate/validators'
     import OutlineTextInput from '@/Components/Inputs/OutlineTextInput.vue'
     import OutlinePasswordInput from '@/Components/Inputs/OutlinePasswordInput.vue'
-    import BasicButton from '@/Components/Buttons/BasicButton.vue'
+    import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue'
+    import { computed, reactive } from 'vue'
 
-    export default {
-        components: {
-            OutlineTextInput,
-            OutlinePasswordInput,
-            BasicButton,
-        },
+    const form = reactive({
+        name: '',
+        email: '',
+        password: '',
+        password_confirmation: '',
+    });
 
-        data() {
-            return {
-                v$: useValidate(),
-
-                form: this.$inertia.form({
-                    name:                   '',
-                    email:                  '',
-                    password:               '',
-                    password_confirmation:  '',
-                }),
-            }
-        },
-
-        emits: ['cancel', 'submitted'],
-
-        methods: {
-            cancel(){
-                this.$emit('cancel')
+    const rules = computed(() => {
+        return {
+            name: {
+                required,
+                minLength: minLength(3),
+                maxLength: maxLength(80),
             },
 
-            submitted(){
-                this.v$.$validate()
+            email: {
+                required,
+                email,
+            },
 
-                if(this.v$.$error)
-                    return
+            password: {
+                required,
+                minLength: minLength(8),
+                maxLength: maxLength(16),
+            },
 
-                this.$emit('submitted', this.form)
+            password_confirmation: {
+                required,
+                minLength: minLength(8),
+                maxLength: maxLength(16),
+                sameAs: sameAs(form.password)
             }
-        },
+        }
+    })
 
-        validations(){
-            return {
-                form: {
-                    name: {
-                        required,
-                        minLength: minLength(3),
-                        maxLength: maxLength(80),
-                    },
+    const v$ = useValidate(rules, form)
 
-                    email: {
-                        required,
-                        email,
-                    },
+    const emit = defineEmits(['submitted'])
 
-                    password: {
-                        required,
-                        minLength: minLength(8),
-                    },
+    function submitted(){
+        v$.value.$validate()
 
-                    password_confirmation: {
-                        required,
-                        minLength: minLength(8),
-                        sameAs: sameAs(this.form.password)
-                    }
-                }
-            }
-        },
+        if(v$.value.$error)
+            return
+
+        emit('submitted', form)
     }
 </script>

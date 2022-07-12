@@ -1,45 +1,21 @@
 ## Dashboard
 
-Esse projeto é uma implementação do Admin One Dashboard, o qual é um dashboard open source, construido com Vue.JS 3, Inertia JS e Tailwind CSS 3, tendo-os como dependências. Esse projeto segue uma implementação um pouco diferente da apresentada na [Documentação Oficial](https://github.com/justboil/admin-one-vue-tailwind), não utilizando o Laravel Jetstream.
+Esse projeto nasceu da necessidade de um kit inicial, simples e fácil de personalizar. O projeto Dashboard é um kit inicial para laravel, construido com Vue.JS 3, Inertia JS e Tailwind CSS 3. O design do dashboard (area autenticada) foi inspirado no [Admin One Dashboard](https://github.com/justboil/admin-one-vue-tailwind), utilizando-se de alguns de seus componentes modificados, a saber: Chart e CardWidget. Utilizou-se também código referente à funcionalidade de Modo Claro e Escuro.
 
 ## Tecnologias Primarias
 
-- [Laravel 8.x](https://laravel.com/docs/8.x)
 - [Vue.JS 3.x](https://vuejsbr-docs-next.netlify.app/)
 - [Inertia JS](https://inertiajs.com/)
 - [Tailwind CSS 3.x](https://tailwindcss.com/docs/guides/laravel)
-- [Admin One Dashboard](https://github.com/justboil/admin-one-vue-tailwind)
+- [Pinia](https://pinia.vuejs.org/introduction.html)
+- [Font Awesome](https://fontawesome.com/search?s=solid%2Cbrands)
+- [Vuelidate](https://vuelidate.js.org/)
 
-## Instruções de Uso
+## Mais Detalhes
 
-Para começar um novo projeto utilizando esse como ponto de partida, siga as instruções abaixo:
+Esse repositório tem como objetivo compartilhar o conhecimento, pois nada melhor que pegar algo e fazer manualmente, acompanhando cada etapa do processo, adquirindo um conhecimento solido. Com base nesse objetivo será apresentado o passo a passo de como fazer essa implementação manualmente. Para o dia a dia, foi desenvolvido um [Pacote laravel]('https://github.com/wagner-m-alves') que pode ser instalado com o Composer.
 
-1. Clone o repositório, usando o comando abaixo:
-```
-git clone https://github.com/wagner-m-alves/dashboard.git
-```
-
-2. Acesse a raiz do projeto, utilizando o comando abaixo:
-```
-cd dashboard
-```
-
-3. Instale as dependências, utilizando o comando abaixo:
-```
-composer install
-```
-
-4. Crie o arquivo .env, utilizando o comando abaixo:
-```
-cp .env.example .env
-```
-
-5. Gere a chave do projeto, utilizando o comando abaixo:
-```
-php artisan key:generate
-```
-
-## Instruções Para Implementação Manual
+## Implementação Manual
 
 ### Instalar Laravel 8.x e Dependências Básicas
 
@@ -58,6 +34,29 @@ composer require tightenco/ziggy
 1. Instale o Vue.JS 3.x, utilizando o comando abaixo:
 ```
 npm install vue
+```
+
+2. Crie o arquivo `app.js` no diretório `resources/js` do seu novo projeto Laravel e adicione o conteúdo abaixo:
+```
+import './bootstrap';
+
+import { createApp, h } from 'vue'
+import { createInertiaApp } from '@inertiajs/inertia-vue3'
+import { createPinia } from 'pinia'
+import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
+
+const pinia = createPinia()
+
+createInertiaApp({
+  resolve: name => require(`./Pages/${name}`),
+  setup({ el, app, props, plugin }) {
+    createApp({ render: () => h(app, props) })
+      .use(plugin)
+      .use(pinia)
+      .use(ZiggyVue, Ziggy)
+      .mount(el)
+  },
+})
 ```
 
 ### Instalar Inertia
@@ -106,11 +105,72 @@ npm install @inertiajs/inertia @inertiajs/inertia-vue3
 
 6. Crie o diretório `resources/js/Pages`.
 
+### Instalar Pinia
+1. Instale o Pinia, utilizando o comando abaixo:
+```
+npm install pinia
+```
+
+2. Adicione o Pinia como plugin no arquivo `app.js`, presente no diretório `resources/js` de seu novo projeto laravel.
+```
+...
+import { createPinia } from 'pinia'
+
+const pinia = createPinia()
+
+createInertiaApp({
+  resolve: name => require(`./Pages/${name}`),
+  setup({ el, app, props, plugin }) {
+    createApp({ render: () => h(app, props) })
+      .use(plugin)
+      .use(pinia)
+      .use(ZiggyVue, Ziggy)
+      .mount(el)
+  },
+})
+...
+```
+
+### Instalar Font Awesome
+1. Instale os seguintes pacote, utilizando os comandos abaixo:
+```
+npm i --save @fortawesome/fontawesome-svg-core
+npm i --save @fortawesome/free-solid-svg-icons
+npm i --save @fortawesome/free-regular-svg-icons
+npm i --save @fortawesome/free-brands-svg-icons
+npm i --save @fortawesome/vue-fontawesome@prerelease
+```
+
+2. Crie um arquivo com o nome `fontawesome-icons.js` em `resources/js`
+
+3. Insira o conteúdo abaixo no arquivo criado
+```
+import { library, dom } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+
+library.add(fas, far, fab)
+dom.watch();
+```
+
+4. Acrescente a linha abaixo ao arquivo `app.js`, presente no diretório `resources/js`:
+```
+import ‘./fontawesome-icons’;
+```
+
+### Instalar Vuelidate
+1. Instale o Vuelidate, utilizando o comando abaixo:
+```
+npm install @vuelidate/core @vuelidate/validators
+```
+
 ### Instalar Tailwind CSS 3.x
 
 1. Instale o Tailwind CSS, utilizando o comando abaixo:
 ```
-npm install -D tailwindcss postcss autoprefixer
+npm install -D tailwindcss postcss
 npx tailwindcss init
 ```
 
@@ -173,7 +233,7 @@ cd caminho-do-seu-projeto-laravel
 
 2. Instale e atualize as dependências, utilizando os comandos abaixo:
 ```
-npm i pinia @mdi/js chart.js numeral autoprefixer -D
+npm i pinia chart.js numeral autoprefixer -D
 npm install autoprefixer@10.4.5 --save-exact
 ```
 

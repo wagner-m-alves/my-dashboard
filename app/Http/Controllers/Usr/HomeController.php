@@ -12,4 +12,9 @@ class HomeController extends Controller
     {
         return Inertia::render('Usr/Dashboard');
     }
+
+    public function profile()
+    {
+        return Inertia::render('Profiles/Usr');
+    }
 }

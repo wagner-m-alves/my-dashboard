@@ -1,45 +1,20 @@
 import './bootstrap';
-
-import { createPinia } from 'pinia'
-import { useMainStore } from '@/Dashboard/stores/main'
-
-import { darkModeKey, styleKey } from '@/Dashboard/config.js'
+import './fontawesome-icons';
 
 import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/inertia-vue3'
-import { InertiaProgress } from '@inertiajs/progress'
-import { Inertia } from '@inertiajs/inertia'
+import { createPinia } from 'pinia'
+import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 
 const pinia = createPinia()
 
-const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel'
-
 createInertiaApp({
-  title: (title) => `${title} - ${appName}`,
-  resolve: (name) => require(`./Pages/${name}.vue`),
+  resolve: name => require(`./Pages/${name}`),
   setup({ el, app, props, plugin }) {
-    return createApp({ render: () => h(app, props) })
+    createApp({ render: () => h(app, props) })
       .use(plugin)
       .use(pinia)
-      .mixin({ methods: { route }})
+      .use(ZiggyVue, Ziggy)
       .mount(el)
   },
-})
-
-InertiaProgress.init({ color: '#4B5563' })
-
-const mainStore = useMainStore(pinia)
-
-/* App style */
-mainStore.setStyle(localStorage[styleKey] ?? 'basic')
-
-/* Dark mode */
-if ((!localStorage[darkModeKey] && window.matchMedia('(prefers-color-scheme: dark)').matches) || localStorage[darkModeKey] === '1') {
-  mainStore.setDarkMode(true)
-}
-
-/* Collapse mobile aside menu on route change */
-Inertia.on('navigate', (event) => {
-  mainStore.asideMobileToggle(false)
-  mainStore.asideLgToggle(false)
 })

@@ -1,37 +1,22 @@
 <template>
-    <BreezeGuestLayout>
+    <guest>
         <Head title="Register" />
 
         <register-form @cancel="cancel" @submitted="submit"/>
-    </BreezeGuestLayout>
+    </guest>
 </template>
 
-<script>
-    import BreezeGuestLayout from '@/Layouts/Guest.vue';
+<script setup>
+    import Guest from '@/Layouts/Guest.vue';
     import { Head } from '@inertiajs/inertia-vue3';
     import RegisterForm from '@/Pages/Auth/Partials/RegisterForm.vue';
+    import { Inertia } from '@inertiajs/inertia';
 
-    export default {
-        components: {
-            BreezeGuestLayout,
-            Head,
-            RegisterForm
-        },
+    function cancel(){
+        Inertia.get(route('site.welcome'))
+    }
 
-        methods: {
-            cancel(){
-                this.$inertia.get(this.route('site.welcome'))
-            },
-
-            submit(data){
-                this.$inertia.post(this.route('register'), data)
-            }
-        },
+    function submit(data){
+        Inertia.post(route('register'), data)
     }
 </script>
-
-<style>
-    body {
-        padding: 0px;
-    }
-</style>

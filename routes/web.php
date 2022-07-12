@@ -27,5 +27,8 @@ require __DIR__.'/auth.php';
 Route::group(['middleware' => ['auth', 'verified']], function () {
     # Dashboard
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+    # Profile
+    Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 });
 
