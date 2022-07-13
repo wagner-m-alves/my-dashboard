@@ -1,7 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Site\SiteController;
+use Illuminate\Support\Facades\Route;;
 use App\Http\Controllers\Usr\HomeController;
 
 /*
@@ -15,15 +14,8 @@ use App\Http\Controllers\Usr\HomeController;
 |
 */
 
-# Site
-Route::get('/', [SiteController::class, 'welcome'])->name('site.welcome');
+require __DIR__.'/auth/usr.php';
 
-
-# Authentication
-require __DIR__.'/auth.php';
-
-
-# Usr
 Route::group(['middleware' => ['auth', 'verified']], function () {
     # Dashboard
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
@@ -31,4 +23,3 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     # Profile
     Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 });
-

@@ -53,6 +53,18 @@
         return usePage().props.value.auth.user
     })
 
+    const props = defineProps({
+        profileRouteName: {
+            required: true,
+            type: String
+        },
+
+        logoutRouteName: {
+            required: true,
+            type: String
+        }
+    })
+
     const mainStore = useMainStore()
 
     function lightDark() {
@@ -65,10 +77,10 @@
     }
 
     function profile(){
-        Inertia.get(route('profile'))
+        Inertia.get(route(props.profileRouteName))
     }
 
     function logout(){
-        Inertia.post(route('logout'))
+        Inertia.post(route(props.logoutRouteName))
     }
 </script>

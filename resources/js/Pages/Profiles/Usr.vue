@@ -1,5 +1,5 @@
 <template>
-    <app title="Perfil">
+    <usr-layout title="Perfil">
         <template #breadcrumb>
             <breadcrumb :main="main" :pages="pages" />
         </template>
@@ -42,11 +42,11 @@
 
             <change-image-modal :show="showModalBrandEdit" @submitted="changeImageUpdate" @close="cancelChangeImage" />
         </template>
-    </app>
+    </usr-layout>
 </template>
 
 <script setup>
-    import App from '@/Layouts/App.vue'
+    import UsrLayout from '@/Layouts/UsrLayout.vue'
     import Breadcrumb from '@/Components/Breadcrumb.vue';
     import Card from '@/Components/Cards/Card.vue';
     import SegmentedCard from '@/Components/Cards/SegmentedCard.vue';

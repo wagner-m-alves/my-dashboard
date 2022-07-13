@@ -1,11 +1,11 @@
 <template>
-    <app title="Dashboard">
+    <usr-layout title="Dashboard">
         <template #breadcrumb>
             <breadcrumb :main="main" :pages="pages" />
         </template>
 
         <template #label>
-            Início
+            Início do Usuário
         </template>
 
         <template #content>
@@ -23,11 +23,11 @@
                 </segmented-card>
             </div>
         </template>
-    </app>
+    </usr-layout>
 </template>
 
 <script setup>
-    import App from '@/Layouts/App.vue'
+    import UsrLayout from '@/Layouts/UsrLayout.vue'
     import Breadcrumb from '@/Components/Breadcrumb.vue';
     import WidgetCard from '@/Components/Cards/WidgetCard.vue';
     import SegmentedCard from '@/Components/Cards/SegmentedCard.vue';
