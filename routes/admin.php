@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +23,6 @@ Route::group(['middleware' => ['auth:admin,admin', 'verified'], 'prefix' => 'adm
 
     # Profile
     Route::get('/profile', [HomeController::class, 'profile'])->name('admin.profile');
+    Route::post('/profile/set-image', [ProfileController::class, 'setImage'])->name('admin.profile.set.image');
 });
 

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;;
 use App\Http\Controllers\Usr\HomeController;
+use App\Http\Controllers\Usr\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +23,5 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     # Profile
     Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
+    Route::post('/profile/set-image', [ProfileController::class, 'setImage'])->name('profile.set.image');
 });

@@ -55,6 +55,7 @@
     import ChangeImageModal from '@/Pages/Profiles/Partials/ChangeImageModal.vue';
     import { computed, ref } from 'vue';
     import { usePage } from '@inertiajs/inertia-vue3';
+    import { Inertia } from '@inertiajs/inertia';
 
     const defaultImagePath = 'img/avatar-default.png'
 
@@ -81,8 +82,11 @@
     }
 
     function changeImageUpdate(data){
-        console.log(data)
-        cancelChangeImage()
+        Inertia.post(route('profile.set.image'), data, {
+            onSuccess: () => {
+                cancelChangeImage()
+            }
+        })
     }
 
     function cancelChangeImage(){
