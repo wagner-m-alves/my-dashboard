@@ -17,17 +17,21 @@
     import { required, email } from '@vuelidate/validators'
     import OutlineTextInput from '@/Components/Inputs/OutlineTextInput.vue'
     import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue'
+    import { useForm } from '@inertiajs/inertia-vue3';
+    import { computed } from 'vue';
 
-    const form = reactive({
+    const form = useForm({
         email: '',
     });
 
-    const rules = {
-        email: {
-            required,
-            email
-        },
-    }
+    const rules = computed(() => {
+        return {
+            email: {
+                required,
+                email
+            },
+        }
+    })
 
     const v$ = useValidate(rules, form)
 

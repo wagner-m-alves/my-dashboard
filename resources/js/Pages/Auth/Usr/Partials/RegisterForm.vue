@@ -27,9 +27,10 @@
     import OutlineTextInput from '@/Components/Inputs/OutlineTextInput.vue'
     import OutlinePasswordInput from '@/Components/Inputs/OutlinePasswordInput.vue'
     import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue'
-    import { computed, reactive } from 'vue'
+    import { computed } from 'vue'
+    import { useForm } from '@inertiajs/inertia-vue3'
 
-    const form = reactive({
+    const form = useForm({
         name: '',
         email: '',
         password: '',

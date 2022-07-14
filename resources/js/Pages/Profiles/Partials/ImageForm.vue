@@ -20,19 +20,22 @@
     import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue'
     import useValidate from '@vuelidate/core'
     import { required } from '@vuelidate/validators'
-    import { reactive } from 'vue';
+    import { useForm } from '@inertiajs/inertia-vue3';
+    import { computed } from 'vue';
 
     const emit = defineEmits(['submitted', 'close'])
 
-    const form = reactive({
+    const form = useForm({
         image: ''
     })
 
-    const rules = {
-        image: {
-            required,
+    const rules = computed(() => {
+        return {
+            image: {
+                required,
+            }
         }
-    }
+    })
 
     const v$ = useValidate(rules, form)
 
@@ -52,9 +55,5 @@
 
     function close () {
         emit('close')
-    }
-
-    function test () {
-        emit('test', form)
     }
 </script>

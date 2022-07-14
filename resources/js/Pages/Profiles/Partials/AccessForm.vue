@@ -16,25 +16,28 @@
     import { required, email, minLength, maxLength } from '@vuelidate/validators'
     import OutlineTextInput from '@/Components/Inputs/OutlineTextInput.vue'
     import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue'
-    import { reactive } from 'vue'
+    import { useForm } from '@inertiajs/inertia-vue3'
+    import { computed } from 'vue'
 
-    const user = reactive({
+    const user = useForm({
         name: props.data.name,
         email: props.data.email,
     });
 
-    const rules = {
-        name: {
-            required,
-            minLength: minLength(3),
-            maxLength: maxLength(80),
-        },
+    const rules = computed(() => {
+        return {
+            name: {
+                required,
+                minLength: minLength(3),
+                maxLength: maxLength(80),
+            },
 
-        email: {
-            required,
-            email,
+            email: {
+                required,
+                email,
+            }
         }
-    }
+    })
 
     const v$ = useValidate(rules, user)
 

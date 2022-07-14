@@ -10,9 +10,9 @@
 
         <template #content>
             <div class="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-3 lg:grid-cols-3 lg:gap-4">
-                <widget-card trend="5%" trend-type="up" :number="279" label="Clientes" icon="fa-solid fa-user-group" colorIcon="text-blue-600" @action="test" />
-                <widget-card trend="17%" trend-type="down" :number="1287" label="Vendas" icon="fa-solid fa-cart-shopping" colorIcon="text-orange-600" @action="test" />
-                <widget-card trend="Mensal" trend-type="info" :number="19987" prefix="R$" label="Receita" icon="fa-solid fa-dollar-sign" colorIcon="text-green-600" @action="test" />
+                <widget-card trend="5%" trend-type="up" :number="279" label="Clientes" icon="fa-solid fa-user-group" colorIcon="text-blue-600" @action="action" />
+                <widget-card trend="17%" trend-type="down" :number="1287" label="Vendas" icon="fa-solid fa-cart-shopping" colorIcon="text-orange-600" @action="action" />
+                <widget-card trend="Mensal" trend-type="info" :number="19987" prefix="R$" label="Receita" icon="fa-solid fa-dollar-sign" colorIcon="text-green-600" @action="action" />
             </div>
 
             <div class="mt-3">
@@ -53,7 +53,7 @@
 
     const pages = []
 
-    function test(){
+    function action(){
         alert('Exibir Conteúdo')
     }
 </script>

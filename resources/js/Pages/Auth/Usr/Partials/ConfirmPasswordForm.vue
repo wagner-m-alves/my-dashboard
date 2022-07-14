@@ -17,18 +17,22 @@
     import { required, minLength, maxLength } from '@vuelidate/validators'
     import OutlinePasswordInput from '@/Components/Inputs/OutlinePasswordInput.vue'
     import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue'
+    import { useForm } from '@inertiajs/inertia-vue3';
+    import { computed } from 'vue';
 
-    const form = reactive({
+    const form = useForm({
         password: '',
     });
 
-    const rules = {
-        password: {
-            required,
-            minLength: minLength(8),
-            maxLength: maxLength(16),
-        },
-    }
+    const rules = computed(() => {
+        return {
+            password: {
+                required,
+                minLength: minLength(8),
+                maxLength: maxLength(16),
+            },
+        }
+    })
 
     const v$ = useValidate(rules, form)
 

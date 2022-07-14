@@ -26,8 +26,10 @@
     import OutlineTextInput from '@/Components/Inputs/OutlineTextInput.vue'
     import OutlinePasswordInput from '@/Components/Inputs/OutlinePasswordInput.vue'
     import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue'
+    import { useForm } from '@inertiajs/inertia-vue3'
+    import { computed } from 'vue'
 
-    const form = reactive({
+    const form = useForm({
         token: props.token,
         email: props.email,
         email: '',
@@ -35,25 +37,27 @@
         password_confirmation: '',
     });
 
-    const rules = {
-        email: {
-            required,
-            email,
-        },
+    const rules = computed(() => {
+        return {
+            email: {
+                required,
+                email,
+            },
 
-        password: {
-            required,
-            minLength: minLength(8),
-            maxLength: maxLength(16),
-        },
+            password: {
+                required,
+                minLength: minLength(8),
+                maxLength: maxLength(16),
+            },
 
-        password_confirmation: {
-            required,
-            minLength: minLength(8),
-            maxLength: maxLength(16),
-            sameAs: sameAs(form.password)
+            password_confirmation: {
+                required,
+                minLength: minLength(8),
+                maxLength: maxLength(16),
+                sameAs: sameAs(form.password)
+            }
         }
-    }
+    })
 
     const props = defineProps({
         email: String,

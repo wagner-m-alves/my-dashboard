@@ -1,7 +1,7 @@
 <template>
     <form @submit.prevent="submitted" class="p-6 space-y-4">
         <div class="mb-3">
-            <h1 class="font-light text-md text-center">Login</h1>
+            <h1 class="font-light text-md text-center">Login do Admin</h1>
         </div>
 
         <div class="mb-3">
@@ -26,25 +26,28 @@
     import OutlineTextInput from '@/Components/Inputs/OutlineTextInput.vue'
     import OutlinePasswordInput from '@/Components/Inputs/OutlinePasswordInput.vue'
     import SecondaryButton from '@/Components/Buttons/SecondaryButton.vue'
-    import { reactive } from 'vue'
+    import { useForm } from '@inertiajs/inertia-vue3'
+    import { computed } from 'vue'
 
-    const form = reactive({
+    const form = useForm({
         email: '',
         password: '',
     });
 
-    const rules = {
-        email: {
-            required,
-            email,
-        },
+    const rules = computed(() => {
+        return {
+            email: {
+                required,
+                email,
+            },
 
-        password: {
-            required,
-            minLength: minLength(8),
-            maxLength: maxLength(16),
-        },
-    }
+            password: {
+                required,
+                minLength: minLength(8),
+                maxLength: maxLength(16),
+            },
+        }
+    })
 
     const v$ = useValidate(rules, form)
 
