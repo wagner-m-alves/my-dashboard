@@ -11,6 +11,21 @@ Esse projeto nasceu da necessidade de um kit inicial, simples e fácil de person
 - [Font Awesome](https://fontawesome.com/search?s=solid%2Cbrands)
 - [Vuelidate](https://vuelidate.js.org/)
 
+## Características
+
+- Autenticação Simples (Usuário)
+- Autenticação Multipla (Usuário e Admin)
+- Página de Login
+- Página de Registro
+- Pagina de Perfil
+- Upload de Imagem de Perfil
+- Modo Claro e Escuro
+- Responsividade
+
+## Compatibilidade
+
+Foi desenvolvido para o Laravel 8.x, portanto, funciona perfeitamente nessa versão. Para versões inferiores a 8.x, provavelmente, será necessário alterações adicionais, já nas versões superiores, talvez não será necessário.
+
 ## Mais Detalhes
 
 Esse repositório tem como objetivo compartilhar o conhecimento, pois nada melhor que pegar algo e fazer manualmente, acompanhando cada etapa do processo, adquirindo um conhecimento solido. Com base nesse objetivo será apresentado o passo a passo de como fazer essa implementação manualmente. Para o dia a dia, em breve, será desenvolvido um [pacote](https://github.com/wagner-m-alves) que poderá ser instalado via o Composer.
@@ -24,7 +39,7 @@ Esse repositório tem como objetivo compartilhar o conhecimento, pois nada melho
 composer create-project laravel/laravel:^8.0 new-project
 ```
 
-2. Acesse a raiz de seu novo projeto Laravel, no qual deseja implementar o dashboard, utilizando o comando abaixo:
+2. Acesse a raiz de seu novo projeto Laravel, no qual deseja implementar o MyDashboard, utilizando o comando abaixo:
 ```
 cd caminho-do-seu-projeto-laravel
 ```
@@ -320,3 +335,6 @@ php artisan migrate
 ```
 php artisan admin:register Admin admin@test.com 12345678
 ```
+### Autenticação Simples
+
+1. Caso deseje utilizar apenas a autenticação simples, ignore os arquivos e diretórios relacionados ao `admin` nos passos `2`,`3`, `6`, `7`, `9`, `10` e `12` do tópico `Copia de Arquivos`.
