@@ -226,7 +226,24 @@ mix.js('resources/js/app.js', 'public/js')
 ]);
 ```
 
-2. Para finalizar, rode o comando abaixo:
+2. Abra o arquivo `webpack.mix.js`, presente na raiz do seu novo projeto Laravel para adicionar alias ao seu projeto. Certifique-se de que o seu arquivo fique conforme apresentado abaixo:
+```
+mix.js('resources/js/app.js', 'public/js')
+    .vue()
+    .postCss('resources/css/app.css', 'public/css', [
+        require("tailwindcss"),
+        require('autoprefixer')
+    ])
+    .alias({
+        '@': 'resources/js',
+    });
+
+if (mix.inProduction()) {
+    mix.version();
+}
+```
+
+3. Para finalizar, rode o comando abaixo:
 ```
 npm install
 npm run dev
