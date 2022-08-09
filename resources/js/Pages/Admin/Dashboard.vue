@@ -5,7 +5,7 @@
         </template>
 
         <template #label>
-            Início do Administrador
+            Início
         </template>
 
         <template #content>

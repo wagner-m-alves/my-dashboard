@@ -1,6 +1,6 @@
-## Dashboard
+## MyDashboard
 
-Esse projeto nasceu da necessidade de um kit inicial, simples e fácil de personalizar. O projeto Dashboard é um kit inicial para laravel, construido com Vue.JS 3, Inertia JS e Tailwind CSS 3. O design do dashboard (area autenticada) foi inspirado no [Admin One Dashboard](https://github.com/justboil/admin-one-vue-tailwind), utilizando-se de alguns de seus componentes modificados, a saber: Chart e CardWidget. Utilizou-se também código referente à funcionalidade de Modo Claro e Escuro.
+Esse projeto nasceu da necessidade de um kit inicial, simples e fácil de personalizar. O projeto MyDashboard é um kit inicial para laravel, construido com Vue.JS 3, Inertia JS e Tailwind CSS 3. O design foi inspirado no [Admin One Dashboard](https://github.com/justboil/admin-one-vue-tailwind), utilizando-se de alguns de seus componentes modificados, a saber: Chart e CardWidget. Utilizou-se também código referente à funcionalidade de Modo Claro e Escuro.
 
 ## Tecnologias Primarias
 
@@ -13,7 +13,7 @@ Esse projeto nasceu da necessidade de um kit inicial, simples e fácil de person
 
 ## Mais Detalhes
 
-Esse repositório tem como objetivo compartilhar o conhecimento, pois nada melhor que pegar algo e fazer manualmente, acompanhando cada etapa do processo, adquirindo um conhecimento solido. Com base nesse objetivo será apresentado o passo a passo de como fazer essa implementação manualmente. Para o dia a dia, foi desenvolvido um [Pacote laravel](https://github.com/wagner-m-alves) que pode ser instalado com o Composer.
+Esse repositório tem como objetivo compartilhar o conhecimento, pois nada melhor que pegar algo e fazer manualmente, acompanhando cada etapa do processo, adquirindo um conhecimento solido. Com base nesse objetivo será apresentado o passo a passo de como fazer essa implementação manualmente. Para o dia a dia, em breve, será desenvolvido um [pacote](https://github.com/wagner-m-alves) que poderá ser instalado via o Composer.
 
 ## Implementação Manual
 
@@ -24,7 +24,12 @@ Esse repositório tem como objetivo compartilhar o conhecimento, pois nada melho
 composer create-project laravel/laravel:^8.0 new-project
 ```
 
-2. Instale o pacote `Ziggy` (pacote que fornece a função global route para o JavaScript), utilizando o comando abaixo:
+2. Acesse a raiz de seu novo projeto Laravel, no qual deseja implementar o dashboard, utilizando o comando abaixo:
+```
+cd caminho-do-seu-projeto-laravel
+```
+
+3. Instale o pacote `Ziggy` (pacote que fornece a função global route para o JavaScript), utilizando o comando abaixo:
 ```
 composer require tightenco/ziggy
 ```
@@ -181,16 +186,25 @@ require("tailwindcss"),
 
 3. Modifique o arquivo `tailwind.config.js`, localizado na raiz do projeto, de forma que fique igual ao exemplo abaixo:
 ```
-module.exports = { 
-content: [ 
-    "./resources/**/*.blade.php",
-    "./resources/**/*.js",
-    "./resources/**/*.vue",
-], 
-theme: { 
-	extend: {}, 
-},
-    plugins: [], 
+module.exports = {
+    content: [
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
+    ],
+
+    darkMode: 'class',
+
+    theme: {
+        extend: {
+            colors: {
+            'gray-850':'#141e2c',
+            'gray-750':'#1a2432',
+            },
+        },
+    },
+
+    plugins: [],
 }
 ```
 
@@ -201,7 +215,7 @@ theme: {
 @tailwind utilities;
 ```
 
-### Configurações
+### Configurações Finais
 
 1. Adicione o Vue no arquivo `webpack.mix.js`, localizado na raiz do projeto. Certifique-se de que seu arquivo fique semelhando ao exemplo abaixo:
 ```
@@ -214,8 +228,22 @@ mix.js('resources/js/app.js', 'public/js')
 
 2. Para finalizar, rode o comando abaixo:
 ```
+npm install
 npm run dev
 ```
+
+### Dependências Secundárias
+
+1. Instale e atualize as dependências, utilizando os comandos abaixo:
+```
+npm install chart.js numeral -D
+npm install autoprefixer@10.4.5 -D --save-exact
+```
+
+### Configuração do Autoprefixer
+
+1. Adicione, caso não esteja pronto, `require('autoprefixer')` às opções de plug-in PostCSS no arquivo `webpack.mix.js`, presente na raiz de seu projeto Laravel.
+
 
 ### Obter Arquivos Necessários
 
@@ -224,33 +252,54 @@ npm run dev
 git clone https://github.com/wagner-m-alves/dashboard.git
 ```
 
-### Dependências Secundárias
-
-1. Acesse a raiz de seu novo projeto Laravel, no qual deseja implementar o dashboard, utilizando o comando abaixo:
-```
-cd caminho-do-seu-projeto-laravel
-```
-
-2. Instale e atualize as dependências, utilizando os comandos abaixo:
-```
-npm i pinia chart.js numeral autoprefixer -D
-npm install autoprefixer@10.4.5 --save-exact
-```
-
-### Configuração do Autoprefixer
-
-1. Adicione, caso não esteja pronto, `require('autoprefixer')` às opções de plug-in PostCSS no arquivo `webpack.mix.js`, presente na raiz de seu projeto Laravel.
-
 ### Copia de Arquivos
 
-1. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie os diretórios `resources/js` e `resources/css` para o diretório `resources` do seu novo projeto Laravel.
+1. Apague os diretórios `resources/js` e `resources/css`, presentes no diretório `resources` do seu novo projeto Laravel.
 
-2. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie os diretórios `app/Http/Controllers/Auth`, `app/Http/Controllers/Site` e `app/Http/Controllers/Web` para o diretório `app/Http/Controllers` do seu novo projeto Laravel.
+2. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` copie os diretórios `resources/js` e `resources/css` para o diretório `resources` do seu novo projeto Laravel.
 
-3. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o diretório `app/Http/Requests/Auth` para o diretório `app/Http/Requests` do seu novo projeto Laravel.
+3. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie os diretórios `app/Http/Controllers/Auth`, `app/Http/Controllers/Site`, `app/Http/Controllers/Usr` e `app/Http/Controllers/Admin` para o diretório `app/Http/Controllers` do seu novo projeto Laravel.
 
-4. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o arquivo `app/Http/Middleware/HandleInertiaRequests.php` para o diretório `app/Http/Middleware` do seu novo projeto Laravel, de modo a substituir o arquivo existente.
+4. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o diretório `app/Http/Requests` para o diretório `app/Http` do seu novo projeto Laravel.
 
-5. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o arquivo `app/routes/auth.php` para o diretório `app/routes` do seu novo projeto Laravel.
+5. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o arquivo `app/Http/Middleware/HandleInertiaRequests.php` para o diretório `app/Http/Middleware` do seu novo projeto Laravel, de modo a substituir o arquivo existente.
 
-6. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o arquivo `app/routes/web.php` para o diretório `app/routes` do seu novo projeto Laravel, de modo a substituir o arquivo existente.
+6. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o diretório `app/routes/auth` para o diretório `app/routes` do seu novo projeto Laravel.
+
+7. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie os arquivos `app/routes/admin.php`, `app/routes/site.php`, `app/routes/web.php` para o diretório `app/routes` do seu novo projeto Laravel, de modo a substituir o arquivo existente.
+
+8. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o diretório `app/Models/Traits` para o diretório `app/Models` do seu novo projeto Laravel, de modo a substituir o arquivo existente.
+
+9. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie os arquivos `app/Models/Admin.php` e `app/Models/User.php` para o diretório `app/Models` do seu novo projeto Laravel, de modo a substituir o arquivo existente.    
+
+10. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie os arquivos `database/migrations/2014_10_12_000000_create_users_table.php` e `database/migrations/2014_10_12_000001_create_admins_table.php` para o diretório `database/migrations` do seu novo projeto Laravel, de modo a substituir o arquivo existente.    
+
+11. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o diretório `app/Observers` para o diretório `app` do seu novo projeto Laravel.   
+
+12. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o diretório `app/Console/Commands` para o diretório `app/Console` do seu novo projeto Laravel.
+
+### Compilar Arquivos
+
+1. Compile os arquivos css e js, utilizando o comando abaixo:
+```
+npm run dev
+```
+Obs: Caso dê algum erro relacionado ao autoprefixer, delete o diretório node_modules e rode os seguintes comandos: `npm install` e `npm run dev`
+
+### Configuração de Ambiente
+
+1. Abra o arquivo `.env` e insira os dados de sua configuração do banco de dados.
+
+###  Migração de Banco de dados
+
+1. Para rodar a migração de banco de dados, utilize o comando abaixo:
+```
+php artisan migrate
+```
+
+### Criar Admin de Testes
+
+1. Para criar um administrador de testes, utilize o comando abaixo:
+```
+php artisan admin:register Admin admin@test.com 12345678
+```

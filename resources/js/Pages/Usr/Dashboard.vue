@@ -5,7 +5,7 @@
         </template>
 
         <template #label>
-            Início do Usuário
+            Início
         </template>
 
         <template #content>

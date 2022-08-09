@@ -16,8 +16,9 @@
             <div class="grid grid-cols-1 gap-1 lg:grid-cols-5 lg:gap-4">
                 <div class="col-span-1 lg:col-span-2 space-y-5">
                     <card>
-                        <div class="flex justify-center space-x-1">
-                            <img class="w-36 h-36 rounded-full text-center overflow-hidden" :src="user.image_path ? '../storage/'+user.image_path : '../storage/'+defaultImagePath" alt="">
+                        <div class="flex justify-center space-x-1 dark:text-white">
+                            <img v-if="user.image_path" class="w-36 h-36 rounded-full text-center overflow-hidden" :src="'/storage/'+user.image_path" alt="">
+                            <i v-else class="w-36 h-36 fa-solid fa-circle-user"></i>
 
                             <div class="mt-3">
                                 <success-button @action="changeImageEdit"><i class="fa-solid fa-pencil"></i></success-button>
@@ -63,8 +64,6 @@
     import { computed, ref } from 'vue';
     import { usePage } from '@inertiajs/inertia-vue3';
     import { Inertia } from '@inertiajs/inertia';
-
-    const defaultImagePath = 'img/avatar-default.png'
 
     const user = computed(() => {
         return usePage().props.value.user
