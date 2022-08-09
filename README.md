@@ -281,7 +281,7 @@ npm install autoprefixer@10.4.5 -D --save-exact
 
 1. Clone esse repositório, utilizando o comando abaixo:
 ```
-git clone https://github.com/wagner-m-alves/dashboard.git
+git clone https://github.com/wagner-m-alves/my-dashboard.git
 ```
 
 ### Copia de Arquivos
