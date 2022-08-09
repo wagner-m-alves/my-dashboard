@@ -14,6 +14,10 @@
                 <slot name="content" />
             </div>
         </div>
+
+        <div class="flex flex-row justify-end px-6 py-4 dark:bg-gray-800 dark:text-white">
+            <slot name="footer" />
+        </div>
     </Modal>
 </template>
 

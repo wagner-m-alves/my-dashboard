@@ -1,8 +1,14 @@
 <template>
-    <div class="py-2.5 px-4 flex items-center duration-300 cursor-pointer hover:bg-blue-700" :class="textColor" @click="toggle">
-        <i v-if="icon" class="mr-4" :class="icon"></i>
-        <span class="font-semibold text-sm text-gray-200">Listagem 1</span>
-        <i class="fa-solid fa-chevron-down text-gray-200 ml-auto mr-2" id="icon"></i>
+    <div class="py-2.5 px-4 flex items-center duration-300 cursor-pointer hover:bg-blue-700 gap-2" :class="textColor" @click="toggle">
+        <div class="w-9 flex items-center justify-center overflow-hidden">
+            <i v-if="icon" :class="icon"></i>
+        </div>
+        <div class="w-full flex items-center overflow-hidden">
+            <span class="font-semibold text-sm text-gray-200">{{label}}</span>
+        </div>
+        <div class="w-9 flex items-center justify-center overflow-hidden">
+            <i class="fa-solid fa-chevron-down text-gray-200" id="icon"></i>
+        </div>
     </div>
 
     <div v-if="submenuVisibility" class="bg-gray-700 dark:bg-gray-750 text-left text-sm font-thin" :class="textColor" id="submenu">

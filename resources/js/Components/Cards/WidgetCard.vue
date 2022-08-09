@@ -1,31 +1,33 @@
 <template>
-  <card>
-        <div class="flex items-center">
-            <trend :trend="trend" :trendType="trendType" />
+    <card>
+        <div class="space-y-6">
+            <div class="flex items-center">
+                <trend :trend="trend" :trendType="trendType" />
 
-            <div class="w-full flex justify-end">
-                <button @click="action" class="bg-gray-100 text-gray-900 hover:bg-gray-200 py-1 px-2 rounded-sm border border-b-gray-200">
-                    <i :class="actionIcon"></i>
-                </button>
+                <div class="w-full flex justify-end">
+                    <button @click="action" class="bg-gray-100 text-gray-900 hover:bg-gray-200 py-1 px-2 rounded-sm border border-b-gray-200">
+                        <i :class="actionIcon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex items-center">
+                <div>
+                    <h3 class="text-lg leading-tight text-gray-500 dark:text-gray-400">
+                        {{ label }}
+                    </h3>
+
+                    <h1 class="text-3xl leading-tight font-semibold">
+                        <growing-number :value="number" :prefix="prefix" :suffix="suffix" />
+                    </h1>
+                </div>
+
+                <div class="text-4xl w-full flex justify-end" :class="colorIcon">
+                    <i :class="icon"></i>
+                </div>
             </div>
         </div>
-
-        <div class="flex items-center">
-            <div>
-                <h3 class="text-lg leading-tight text-gray-500 dark:text-gray-400">
-                    {{ label }}
-                </h3>
-
-                <h1 class="text-3xl leading-tight font-semibold">
-                    <growing-number :value="number" :prefix="prefix" :suffix="suffix" />
-                </h1>
-            </div>
-
-            <div class="text-4xl w-full flex justify-end" :class="colorIcon">
-                <i :class="icon"></i>
-            </div>
-        </div>
-  </card>
+    </card>
 </template>
 
 <script setup>

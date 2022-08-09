@@ -17,5 +17,4 @@
     function action(){
         emit('action')
     }
-
 </script>

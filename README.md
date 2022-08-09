@@ -13,7 +13,7 @@ Esse projeto nasceu da necessidade de um kit inicial, simples e fácil de person
 
 ## Mais Detalhes
 
-Esse repositório tem como objetivo compartilhar o conhecimento, pois nada melhor que pegar algo e fazer manualmente, acompanhando cada etapa do processo, adquirindo um conhecimento solido. Com base nesse objetivo será apresentado o passo a passo de como fazer essa implementação manualmente. Para o dia a dia, foi desenvolvido um [Pacote laravel]('https://github.com/wagner-m-alves') que pode ser instalado com o Composer.
+Esse repositório tem como objetivo compartilhar o conhecimento, pois nada melhor que pegar algo e fazer manualmente, acompanhando cada etapa do processo, adquirindo um conhecimento solido. Com base nesse objetivo será apresentado o passo a passo de como fazer essa implementação manualmente. Para o dia a dia, foi desenvolvido um [Pacote laravel](https://github.com/wagner-m-alves) que pode ser instalado com o Composer.
 
 ## Implementação Manual
 

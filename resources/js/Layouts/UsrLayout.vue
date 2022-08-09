@@ -4,7 +4,11 @@
 
         <div class="h-full lg:grid lg:grid-cols-12">
             <div class="lg:col-span-2">
-                <side-bar />
+                <side-bar homeRouteName="dashboard">
+                    <side-bar-simple-menu icon="fa-solid fa-house-chimney" label="Home" routeName="dashboard" />
+
+                    <side-bar-toggle-menu icon="fa-solid fa-flag" label="Lista" :submenuList="submenu" />
+                </side-bar>
             </div>
 
             <div class="lg:col-span-10">
@@ -33,7 +37,22 @@
 <script setup>
     import { Head } from '@inertiajs/inertia-vue3';
     import SideBar from '@/Dashboard/Components/SideBar.vue'
+    import SideBarSimpleMenu from '@/Dashboard/Components/SideBarSimpleMenu.vue'
+    import SideBarToggleMenu from '@/Dashboard/Components/SideBarToggleMenu.vue'
     import NavBar from '@/Dashboard/Components/NavBar.vue'
+
+    const submenu = [
+        {
+            icon:       'fa-solid fa-flag',
+            label:      'Item 1',
+            routeName:  ''
+        },
+        {
+            icon:       'fa-solid fa-flag',
+            label:      'Item 2',
+            routeName:  ''
+        }
+    ]
 
     const props = defineProps({
         title: {

@@ -6,7 +6,7 @@
         </h5>
 
         <!-- content -->
-        <div class="mb-6">
+        <div class="mb-6 text-gray-900 dark:text-white">
             <slot name="content" />
         </div>
 

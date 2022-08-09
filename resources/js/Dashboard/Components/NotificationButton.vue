@@ -9,14 +9,28 @@
 </template>
 
 <script setup>
-    import { computed } from 'vue'
+    import { computed, onMounted } from 'vue'
     import { useMainStore } from '@/Stores/Main'
+    import axios from 'axios';
+
+    onMounted(() => {
+        check()
+    })
 
     const mainStore = useMainStore()
 
     const hasNotification = computed(() => mainStore.hasNotification)
 
     const emit = defineEmits(['action'])
+
+    function check() {
+        // axios.get(route('notifications-route'))
+        //     .then(response => {
+        //         let has = response.data.length > 0 ? true : false
+
+        //         mainStore.setHasNotification(has)
+        //     })
+    }
 
     function action() {
         emit('action');

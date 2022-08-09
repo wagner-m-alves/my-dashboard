@@ -1,5 +1,5 @@
 <template>
-    <usr-layout title="Perfil">
+    <admin-layout title="Perfil">
         <template #breadcrumb>
             <breadcrumb :main="main" :pages="pages" />
         </template>
@@ -9,6 +9,10 @@
         </template>
 
         <template #content>
+            <success-alert />
+            <warning-alert />
+            <failed-alert />
+
             <div class="grid grid-cols-1 gap-1 lg:grid-cols-5 lg:gap-4">
                 <div class="col-span-1 lg:col-span-2 space-y-5">
                     <card>
@@ -42,12 +46,15 @@
 
             <change-image-modal :show="showModalBrandEdit" @submitted="changeImageUpdate" @close="cancelChangeImage" />
         </template>
-    </usr-layout>
+    </admin-layout>
 </template>
 
 <script setup>
-    import UsrLayout from '@/Layouts/UsrLayout.vue'
+    import AdminLayout from '@/Layouts/AdminLayout.vue'
     import Breadcrumb from '@/Components/Breadcrumb.vue';
+    import SuccessAlert from '@/Components/Alerts/SuccessAlert'
+    import WarningAlert from '@/Components/Alerts/WarningAlert'
+    import FailedAlert from '@/Components/Alerts/FailedAlert'
     import Card from '@/Components/Cards/Card.vue';
     import SegmentedCard from '@/Components/Cards/SegmentedCard.vue';
     import AccessForm from '@/Pages/Profiles/Partials/AccessForm.vue';
@@ -60,7 +67,7 @@
     const defaultImagePath = 'img/avatar-default.png'
 
     const user = computed(() => {
-        return usePage().props.value.auth.user
+        return usePage().props.value.user
     })
 
     const showModalBrandEdit = ref(false)

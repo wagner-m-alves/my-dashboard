@@ -22,7 +22,7 @@
         },
 
         label: {
-            default:    'Dashboard',
+            default:    'MyDashboard',
             type:       String,
         }
     })
