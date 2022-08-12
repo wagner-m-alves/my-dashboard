@@ -1,5 +1,5 @@
 <template>
-    <nav class="sticky top-0 h-14 bg-white text-gray-900 dark:bg-gray-900 dark:lg:border-l dark:lg:border-gray-800 flex items-center">
+    <nav class="lg:sticky lg:top-0 h-14 bg-white text-gray-900 dark:bg-gray-900 dark:lg:border-l dark:lg:border-gray-800 flex items-center">
         <div class="w-14 h-full flex items-center justify-center overflow-hidden dark:text-white lg:invisible">
             <button @click="hideSideBar" class="p-2 hover:text-blue-700"><i class="fa-solid fa-bars"></i></button>
         </div>
