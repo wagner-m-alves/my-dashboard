@@ -13,9 +13,14 @@
 
     <div v-if="submenuVisibility" class="bg-gray-700 dark:bg-gray-750 text-left text-sm font-thin" :class="textColor" id="submenu">
         <ul>
-            <li v-for="(submenu, index) in submenuList" :key="index" class="text-xs font-normal cursor-pointer py-1.5 pl-8 pr-4 hover:bg-gray-600" :class="[submenuVisibility ? 'hover:border-l-2 hover:border-blue-700' : '']" @click="action(submenu.routeName)">
-                <i v-if="submenu.icon" class="mr-3" :class="submenu.icon"></i>
-                {{submenu.label}}
+            <li v-for="(submenu, index) in submenuList" :key="index" class="flex items-center text-xs font-normal cursor-pointer py-1.5 pl-8 pr-4 hover:bg-gray-600" :class="[submenuVisibility ? 'hover:border-l-2 hover:border-blue-700' : '']" @click="action(submenu.routeName)">
+                <div class="w-11 flex justify-center">
+                    <i v-if="submenu.icon" :class="submenu.icon"></i>
+                </div>
+
+                <div class="w-full">
+                    {{submenu.label}}
+                </div>
             </li>
         </ul>
     </div>
@@ -55,20 +60,7 @@
         }
     }
 
-    function rotateToggleMenuIcon(){
-        var el = document.getElementById('icon')
-
-        if(submenuVisibility.value){
-            el.classList.add('rotate-180')
-        }
-        else{
-            el.classList.remove('rotate-180')
-        }
-    }
-
     function toggle(){
         submenuVisibility.value = !submenuVisibility.value
-
-        rotateToggleMenuIcon()
     }
 </script>
