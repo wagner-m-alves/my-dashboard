@@ -38,11 +38,11 @@
         }
     })
 
-    function go(route, param = null){
+    function go(routeName, param = null){
         if(param)
-            Inertia.get(route(route, param))
+            Inertia.get(route(routeName, param))
         else{
-            Inertia.get(route(route))
+            Inertia.get(route(routeName))
         }
     }
 </script>
