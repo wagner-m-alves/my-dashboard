@@ -310,6 +310,8 @@ git clone https://github.com/wagner-m-alves/my-dashboard.git
 
 12. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o diretório `app/Console/Commands` para o diretório `app/Console` do seu novo projeto Laravel.
 
+13. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o arquivo `config/auth.php` para o diretório `config` do seu novo projeto Laravel, de modo a substituir o arquivo existente.
+
 ### Compilar Arquivos
 
 1. Compile os arquivos css e js, utilizando o comando abaixo:
@@ -338,3 +340,5 @@ php artisan admin:register Admin admin@test.com 12345678
 ### Autenticação Simples
 
 1. Caso deseje utilizar apenas a autenticação simples, ignore os arquivos e diretórios relacionados ao `admin` nos passos `2`,`3`, `6`, `7`, `9`, `10` e `12` do tópico `Copia de Arquivos`.
+
+2. Ignore completamente o passo `13` do tópico `Copia de Arquivos`.
