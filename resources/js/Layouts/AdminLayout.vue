@@ -14,7 +14,7 @@
             <div class="lg:col-span-10">
                 <nav-bar profileRouteName="admin.profile"  logoutRouteName="admin.logout" />
 
-                <div class="h-9 bg-gray-100 dark:bg-gray-800 p-4 font-light text-sm flex items-center justify-center lg:justify-start overflow-hidden">
+                <div class="h-auto bg-gray-100 dark:bg-gray-800 p-2 font-light text-xs lg:text-sm flex items-center justify-center lg:justify-start overflow-hidden">
                     <slot name="breadcrumb" />
                 </div>
 
