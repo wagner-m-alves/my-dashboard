@@ -40,7 +40,8 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function () {
-            Route::namespace($this->namespace)
+            Route::middleware('web')
+                ->namespace($this->namespace)
                 ->group(base_path('routes/site.php'));
 
             Route::middleware('web')
