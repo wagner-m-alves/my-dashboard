@@ -86,7 +86,7 @@ createInertiaApp({
 composer require inertiajs/inertia-laravel
 ```
 
-2. Crie ou modifique o arquivo `resources/view/app.blade.php`, conforme o conteúdo abaixo:
+2. Crie ou modifique o arquivo `resources/view/app.blade.php`, conforme o conteúdo abaixo (caso o arquivo já exista, lembre-se de renomeá-lo para app.blade.php:
 ```
 <!DOCTYPE html>
 <html>
@@ -122,8 +122,6 @@ php artisan inertia:middleware
 ```
 npm install @inertiajs/inertia @inertiajs/inertia-vue3
 ```
-
-6. Crie o diretório `resources/js/Pages`.
 
 ### Instalar Pinia
 1. Instale o Pinia, utilizando o comando abaixo:
@@ -258,12 +256,6 @@ if (mix.inProduction()) {
 }
 ```
 
-3. Para finalizar, rode o comando abaixo:
-```
-npm install
-npm run dev
-```
-
 ### Dependências Secundárias
 
 1. Instale e atualize as dependências, utilizando os comandos abaixo:
@@ -286,31 +278,31 @@ git clone https://github.com/wagner-m-alves/my-dashboard.git
 
 ### Copia de Arquivos
 
-1. Apague os diretórios `resources/js` e `resources/css`, presentes no diretório `resources` do seu novo projeto Laravel.
+1. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o conteúdo do diretório `resources/js`, exceto os arquivos `app.js`, `bootstrap.js` e `fontawesome-icons.js`, para o diretório `resources/js` do seu novo projeto Laravel.
 
-2. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` copie os diretórios `resources/js` e `resources/css` para o diretório `resources` do seu novo projeto Laravel.
+2. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie os diretórios `app/Http/Controllers/Auth`, `app/Http/Controllers/Site`, `app/Http/Controllers/Usr` e `app/Http/Controllers/Admin` para o diretório `app/Http/Controllers` do seu novo projeto Laravel.
 
-3. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie os diretórios `app/Http/Controllers/Auth`, `app/Http/Controllers/Site`, `app/Http/Controllers/Usr` e `app/Http/Controllers/Admin` para o diretório `app/Http/Controllers` do seu novo projeto Laravel.
+3. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o diretório `app/Http/Requests` para o diretório `app/Http` do seu novo projeto Laravel.
 
-4. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o diretório `app/Http/Requests` para o diretório `app/Http` do seu novo projeto Laravel.
+4. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o arquivo `app/Http/Middleware/HandleInertiaRequests.php` para o diretório `app/Http/Middleware` do seu novo projeto Laravel, de modo a substituir o arquivo existente.
 
-5. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o arquivo `app/Http/Middleware/HandleInertiaRequests.php` para o diretório `app/Http/Middleware` do seu novo projeto Laravel, de modo a substituir o arquivo existente.
+5. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o diretório `app/routes/auth` para o diretório app/routes` do seu novo projeto Laravel.
 
-6. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o diretório `app/routes/auth` para o diretório `app/routes` do seu novo projeto Laravel.
+6. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie os arquivos `app/routes/admin.php`, `app/routes/site.php`, `app/routes/web.php` para o diretório `app/routes` do seu novo projeto Laravel, de modo a substituir o arquivo existente.
 
-7. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie os arquivos `app/routes/admin.php`, `app/routes/site.php`, `app/routes/web.php` para o diretório `app/routes` do seu novo projeto Laravel, de modo a substituir o arquivo existente.
+7. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o diretório `app/Models/Traits` para o diretório `app/Models` do seu novo projeto Laravel, de modo a substituir o arquivo existente.
 
-8. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o diretório `app/Models/Traits` para o diretório `app/Models` do seu novo projeto Laravel, de modo a substituir o arquivo existente.
+8. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie os arquivos `app/Models/Admin.php` e `app/Models/User.php` para o diretório `app/Models` do seu novo projeto Laravel, de modo a substituir o arquivo existente.    
 
-9. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie os arquivos `app/Models/Admin.php` e `app/Models/User.php` para o diretório `app/Models` do seu novo projeto Laravel, de modo a substituir o arquivo existente.    
+9. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie os arquivos `database/migrations/2014_10_12_000000_create_users_table.php` e `database/migrations/2014_10_12_000001_create_admins_table.php` para o diretório `database/migrations` do seu novo projeto Laravel, de modo a substituir o arquivo existente.    
 
-10. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie os arquivos `database/migrations/2014_10_12_000000_create_users_table.php` e `database/migrations/2014_10_12_000001_create_admins_table.php` para o diretório `database/migrations` do seu novo projeto Laravel, de modo a substituir o arquivo existente.    
+10. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o diretório `app/Observers` para o diretório `app` do seu novo projeto Laravel.   
 
-11. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o diretório `app/Observers` para o diretório `app` do seu novo projeto Laravel.   
+11. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o diretório `app/Console/Commands` para o diretório `app/Console` do seu novo projeto Laravel.
 
-12. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o diretório `app/Console/Commands` para o diretório `app/Console` do seu novo projeto Laravel.
+12. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o arquivo `config/auth.php` para o diretório `config` do seu novo projeto Laravel, de modo a substituir o arquivo existente.
 
-13. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o arquivo `config/auth.php` para o diretório `config` do seu novo projeto Laravel, de modo a substituir o arquivo existente.
+13. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o arquivo `app/Providers/RouteServiceProvider.php` para o diretório `app/Providers` do seu novo projeto Laravel, de modo a substituir o arquivo existente.
 
 ### Compilar Arquivos
 
@@ -341,4 +333,4 @@ php artisan admin:register Admin admin@test.com 12345678
 
 1. Caso deseje utilizar apenas a autenticação simples, ignore os arquivos e diretórios relacionados ao `admin` nos passos `2`,`3`, `6`, `7`, `9`, `10` e `12` do tópico `Copia de Arquivos`.
 
-2. Ignore completamente o passo `13` do tópico `Copia de Arquivos`.
+2. Ignore completamente o passo `12` e `13` do tópico `Copia de Arquivos`.
