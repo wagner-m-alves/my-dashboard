@@ -304,6 +304,12 @@ git clone https://github.com/wagner-m-alves/my-dashboard.git
 
 13. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o arquivo `app/Providers/RouteServiceProvider.php` para o diretório `app/Providers` do seu novo projeto Laravel, de modo a substituir o arquivo existente.
 
+14. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o arquivo `app/Exceptions/Handler.php` para o diretório `app/Exceptions` do seu novo projeto Laravel, de modo a substituir o arquivo existente.
+
+15. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o arquivo `app/Http/Middleware/AdminRedirectIfAuthenticated.php` para o diretório `app/Http/Middleware` do seu novo projeto Laravel, de modo a substituir o arquivo existente.
+
+16. Acesse os arquivos do repositório clonado no passo 1 da subseção `Obter Arquivos Necessários` e copie o arquivo `app/Http/Kernel.php` para o diretório `app/Http` do seu novo projeto Laravel, de modo a substituir o arquivo existente.
+
 ### Compilar Arquivos
 
 1. Compile os arquivos css e js, utilizando o comando abaixo:
