@@ -128,6 +128,7 @@ npm install @inertiajs/inertia @inertiajs/inertia-vue3
 ```
 npm install pinia
 ```
+Obs: Caso o comando acima apresente erro, use: **npm install --legacy-peer-deps pinia**
 
 2. Adicione o Pinia como plugin no arquivo `app.js`, presente no diretório `resources/js` de seu novo projeto laravel.
 ```
